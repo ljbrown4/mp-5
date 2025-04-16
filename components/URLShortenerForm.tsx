@@ -78,7 +78,7 @@ export default function URLShortenerForm({ append }: { append: (newURL: URLProps
             {/* alias label/input */}
             <h3 className="font-bold text-xl text-[#73648a] p-1 mt-4">enter custom alias:</h3>
             <div className = "w-full flex mx-2 items-center ">
-                <span className="font-bold text-l text-[#707075] w-[45%]"> http://localhost:3000/</span>
+                <span className="font-bold text-l text-[#707075] w-[45%]"> https://mp-5-theta-smoky.vercel.app/</span>
                 <TextField
                     variant = "outlined"
                     color = "primary"
