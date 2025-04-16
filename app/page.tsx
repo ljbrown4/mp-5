@@ -32,7 +32,7 @@ export default function Home() {
                     <div className="w-[50%]">
                         <h1 className="font-bold text-4xl text-[#453750] text-center mt-4 p-2">URL SHORTENER</h1>
                         <p className="font-bold text-xl text-[#73648a] text-center mb-2 p-2">
-                            "Aliases can't be duplicated. Please delete old alias in the Saved URLs page." </p>
+                            Aliases can not be duplicated. Please delete old alias in the Saved URLs page. </p>
                         <URLShortenerForm append={() => {}} />
                     </div>
                     <div className="w-[45%]">
