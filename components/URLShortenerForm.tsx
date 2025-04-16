@@ -41,23 +41,21 @@ export default function URLShortenerForm({ append }: { append: (newURL: URLProps
 
 
                 } catch (err) {
-                    if (err.message === "invalURL") {
-                        setError({ url: "The entered url is invalid. Please enter a valid url.", alias: null });
-                        setUrl("");
-                        setAlias("");
-                        setTitle("");
-                        setFavourite(false);
-                    } else if (err.message === "alias1") {
-                        setError({url: null, alias: "Alias already exists. Please delete saved url or choose a different alias."})
-                        setAlias("");
-                        setTitle("");
-                        setFavourite(false);
-                    } else if (err.message === "alias2") {
-                        setError({url: null, alias: "Invalid alias. Only enter valid url characters."})
-                        setAlias("");
-                        setTitle("");
-                        setFavourite(false);
-                }}}}>
+                    if (err instanceof Error) { //looked this up online to get rid of err type unkown error
+                        if (err.message === "invalURL") {
+                            setError({ url: "The entered url is invalid. Please enter a valid url.", alias: null });
+                            setUrl("");
+                            setAlias("");
+                            setTitle("");
+                            setFavourite(false);
+                        } else if (err.message === "alias1") {
+                            setError({url: null, alias: "Alias already exists. Please delete saved url or choose a different alias."})
+                            setAlias("");
+                            setTitle("");
+                            setFavourite(false);
+                    } else {
+                            console.error("Unexpected error:", err);
+                    }}}}}>
 
 
             {/* url label/input */}
