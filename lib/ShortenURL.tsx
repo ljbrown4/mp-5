@@ -29,7 +29,7 @@ export default async function shortenURL(url: string, alias: string, title:strin
             throw new Error("alias2");
         }
     }
-    const short = `http://localhost:3000/${alias}`;
+    const short = `/${alias}`;
 
     const newUrl: URLProps = {
         url,

@@ -33,7 +33,7 @@ export default function URLShortenerForm({ append }: { append: (newURL: URLProps
                 try {
                     const newUrl = await shortenURL(url, alias, title, favourite);
                     append(newUrl);
-                    const current = window.location.href; //dynamically set url
+                    const current = window.location.origin; //dynamically set url
                     setShortened(`${current}/${alias}`);
                     setUrl("");
                     setAlias("");
