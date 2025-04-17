@@ -162,7 +162,7 @@ export default function URLShortenerForm({ append }: { append: (newURL: URLProps
             {shortened && (
                 <div className="w-full h-20px flex flex-row items-center justify-between flex-wrap p-2 mr-6">
                     <h2> Your Shortened url: </h2>
-                    <FormHelperText sx={{ color: "#618753", fontWeight: "bold", fontSize: "calc(3px + 1.3vw)"}}>
+                    <FormHelperText sx={{ color: "#618753", fontWeight: "bold", fontSize: "calc(2px + 1.1vw)"}}>
                         <a href={shortened} target="_blank">{shortened}</a>
                     </FormHelperText>
 
