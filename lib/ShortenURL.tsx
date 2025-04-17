@@ -7,9 +7,13 @@ export default async function shortenURL(url: string, alias: string, title:strin
     const urlCollection = await getCollection(URL_COLLECTION);
 
     //check if url is valid
-    const validate = await fetch(url);
-   if (!validate.ok) {
-       throw new Error("invalURL")
+    try { //added it in cases that fetch couldn't parse the url
+        const validate = await fetch(url);
+        if (!validate.ok) {
+            throw new Error("invalURL");
+        }
+    } catch {
+        throw new Error("invalURL");
     }
 
     //check if alias is already used
@@ -19,7 +23,6 @@ export default async function shortenURL(url: string, alias: string, title:strin
     //} else if () { how do u check this?
       //  throw new Error("alias2"); }
      }
-
     const short = `http://localhost:3000/${alias}`;
 
     const newUrl: URLProps = {

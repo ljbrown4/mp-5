@@ -24,6 +24,7 @@ export default function Home() {
         };
         fetchUrls();
     }, []);
+
     return(
         <ThemeProvider theme={theme}>
             <main className="min-h-screen w-full flex-col justify-center bg-[#c5c2c9]">

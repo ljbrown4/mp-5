@@ -33,7 +33,8 @@ export default function URLShortenerForm({ append }: { append: (newURL: URLProps
                 try {
                     const newUrl = await shortenURL(url, alias, title, favourite);
                     append(newUrl);
-                    setShortened(newUrl.shortened);
+                    const current = window.location.origin; //dynamically set url
+                    setShortened(`${current}/${alias}`);
                     setUrl("");
                     setAlias("");
                     setTitle("");
@@ -90,10 +91,6 @@ export default function URLShortenerForm({ append }: { append: (newURL: URLProps
                     onChange={(e) => setAlias(e.target.value)}
                 />
             </div>
-
-
-
-
 
 
 
