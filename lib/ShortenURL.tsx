@@ -3,7 +3,7 @@ import getCollection, { URL_COLLECTION } from "@/db";
 import { URLProps } from "@/types";
 
 
-export default async function shortenURL(url: string, alias: string, title:string, favourites: boolean): Promise<URLProps> {
+export default async function shortenURL(url: string, alias: string, title:string, favourites: boolean, current: string): Promise<URLProps> {
     const urlCollection = await getCollection(URL_COLLECTION);
 
     //check if url is valid
@@ -22,14 +22,8 @@ export default async function shortenURL(url: string, alias: string, title:strin
     if (existingAlias) {
         throw new Error("alias1");
      }
-    const invalid = [' ', '"', '<', '>', '#', '%', '{', '}', '|', '\\', '^', '[', ']', '`', '?', '&', '=', '/', ':', '@', '+', "'"]; //list of invalid url characters
 
-    for (const x in invalid) { //checks if alias includes any invalid url characters
-        if (alias.includes(x)) {
-            throw new Error("alias2");
-        }
-    }
-    const short = `http://localhost:3000/${alias}`;
+    const short = `${current}/${alias}`;
 
     const newUrl: URLProps = {
         url,
