@@ -33,7 +33,7 @@ export default function URLShortenerForm({ append }: { append: (newURL: URLProps
                 try {
                     const newUrl = await shortenURL(url, alias, title, favourite);
                     append(newUrl);
-                    const current = window.location.origin; //dynamically set url
+                    const current = window.location.href; //dynamically set url
                     setShortened(`${current}/${alias}`);
                     setUrl("");
                     setAlias("");
@@ -51,6 +51,11 @@ export default function URLShortenerForm({ append }: { append: (newURL: URLProps
                             setFavourite(false);
                         } else if (err.message === "alias1") {
                             setError({url: null, alias: "Alias already exists. Please delete saved url or choose a different alias."})
+                            setAlias("");
+                            setTitle("");
+                            setFavourite(false);
+                        } else if (err.message === "alias2") {
+                            setError({url: null, alias: "Alias includes invalid url characters. Please input a new alias"})
                             setAlias("");
                             setTitle("");
                             setFavourite(false);

@@ -18,11 +18,17 @@ export default async function shortenURL(url: string, alias: string, title:strin
 
     //check if alias is already used
     const existingAlias = await urlCollection.findOne({alias});
+
     if (existingAlias) {
         throw new Error("alias1");
-    //} else if () { how do u check this?
-      //  throw new Error("alias2"); }
      }
+    const invalid = [' ', '"', '<', '>', '#', '%', '{', '}', '|', '\\', '^', '[', ']', '`', '?', '&', '=', '/', ':', '@', '+', "'"]; //list of invalid url characters
+
+    for (const x in invalid) { //checks if alias includes any invalid url characters
+        if (alias.includes(x)) {
+            throw new Error("alias2");
+        }
+    }
     const short = `http://localhost:3000/${alias}`;
 
     const newUrl: URLProps = {
