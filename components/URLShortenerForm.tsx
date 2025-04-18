@@ -30,41 +30,51 @@ export default function URLShortenerForm({ append }: { append: (newURL: URLProps
                 setError({ url: null, alias: null });
                 setShortened(null);
 
-                try {
-                    const current = window.location.origin; //dynamically set url
-                    const newUrl = await shortenURL(url, alias, title, favourite, current);
+                const current = window.location.origin; //dynamically set url
+                const error = await shortenURL(url, alias, title, favourite, current);
+                const short = `${current}/${alias}`;
 
-                    append(newUrl);
-                    setShortened(newUrl.shortened);
+                if (error === null) {
+                    const newUrl: URLProps = {
+                        url,
+                        alias,
+                        shortened: short,
+                        title,
+                        favourites: favourite,
+                    };
 
                     setUrl("");
                     setAlias("");
                     setTitle("");
                     setFavourite(false);
 
-
-                } catch (err) {
-                    console.log(err)
-                    if (err instanceof Error) { //looked this up online to get rid of err type unknown error
-                        if (err.message === "invalURL") {
-                            setError({ url: "The entered url is invalid. Please enter a valid url.", alias: null });
-                            setUrl("");
-                            setAlias("");
-                            setTitle("");
-                            setFavourite(false);
-                        } else if (err.message === "alias1") {
-                            setError({url: null, alias: "Alias already exists. Please delete saved url or choose a different alias."})
-                            setAlias("");
-                            setTitle("");
-                            setFavourite(false);
-                        } else if (err.message === "alias2") {
-                            setError({url: null, alias: "Alias includes invalid url characters. Please input a new alias"})
-                            setAlias("");
-                            setTitle("");
-                            setFavourite(false);
+                    append(newUrl);
+                } else {
+                    if (error === "invalURL") {
+                        setError({ url: "The entered url is invalid. Please enter a valid url.", alias: null });
+                        setUrl("");
+                        setAlias("");
+                        setTitle("");
+                        setFavourite(false);
+                    } else if (error === "invalURL2") {
+                        setError({ url: "The entered url creates a cycle. Cycles are not allowed.", alias: null });
+                        setUrl("");
+                        setAlias("");
+                        setTitle("");
+                        setFavourite(false);
+                    } else if (error === "alias1") {
+                        setError({url: null, alias: "Alias already exists. Please delete saved url or choose a different alias."})
+                        setAlias("");
+                        setTitle("");
+                        setFavourite(false);
+                    } else if (error === "alias2") {
+                        setError({url: null, alias: "Alias includes invalid url characters. Please input a new alias"})
+                        setAlias("");
+                        setTitle("");
+                        setFavourite(false);
                     } else {
-                            setError({ url: null, alias: "An unexpected error occurred. Please try again." });
-                    }}}}}>
+                        setError({ url: null, alias: "An unexpected error occurred. Please try again." });
+                }}}}>
 
 
             {/* url label/input */}

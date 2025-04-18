@@ -3,31 +3,35 @@ import getCollection, { URL_COLLECTION } from "@/db";
 import { URLProps } from "@/types";
 
 
-export default async function shortenURL(url: string, alias: string, title:string, favourites: boolean, current: string): Promise<URLProps> {
+export default async function shortenURL(url: string, alias: string, title:string, favourites: boolean, current: string): Promise<string | null> {
     const urlCollection = await getCollection(URL_COLLECTION);
+
+    if (url.startsWith("https://mp-5-theta-smoky.vercel.app") || url.startsWith("http://localhost:3000")) {
+        return "invalURL2";
+    }
 
     //check if url is valid
     try { //added it in cases that fetch couldn't parse the url
         const validate = await fetch(url);
-        if (!validate.ok) {
-            console.error("InvalURL", url);
-            throw new Error("invalURL");
+        if (validate.status < 200 || validate.status >= 500) {
+            console.log("InvalURL", url);
+            return "invalURL";
         }
     } catch {
-        console.error("invalURL", url);
-        throw new Error("invalURL");
+        console.log("invalURL", url);
+        return "invalURL";
     }
 
     //check if alias is already used
     const existingAlias = await urlCollection.findOne({alias});
 
     if (existingAlias) {
-        console.error("alias2", alias);
-        throw new Error("alias1");
+        console.log("alias2", alias);
+        return "alias1";
      }
     if (!/^[a-zA-Z0-9_-]+$/.test(alias)) { //looked up how to check for entered invalid url characters
-        console.error("alias2", alias);
-        throw new Error("alias2");
+        console.log("alias2", alias);
+        return "alias2";
     }
 
     const short = `${current}/${alias}`;
@@ -42,5 +46,5 @@ export default async function shortenURL(url: string, alias: string, title:strin
 
     await urlCollection.insertOne({...newUrl});
 
-    return newUrl;
+    return null;
 }
