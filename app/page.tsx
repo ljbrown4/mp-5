@@ -27,7 +27,7 @@ export default function Home() {
 
     return(
         <ThemeProvider theme={theme}>
-            <main className="min-h-screen w-full flex-col justify-center text-black bg-[#c5c2c9]">
+            <main className="min-h-screen pl-2 w-full flex-col justify-center text-black bg-[#c5c2c9]">
                 <Header />
                 <div className="p-auto flex flex-col md:flex-row justify-center items-center w-full">
                     {/*looked up how to make it change between flex row and col based on screen size*/}
