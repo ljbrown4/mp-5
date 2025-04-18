@@ -163,7 +163,7 @@ export default function URLShortenerForm({ append }: { append: (newURL: URLProps
             {/* error message */}
             {(error.url || error.alias) && (
                 <div className="w-full flex justify-center p-2">
-                    <FormHelperText sx={{ color: "#95514c", fontWeight: "bold",fontSize: "calc(3px + 0.9vw)", "@media (max-width: 1000px)": { fontSize: "calc(8px + 0.9vw)" },}}>
+                    <FormHelperText sx={{ color: "#95514c", fontWeight: "bold",fontSize: "calc(2px + 0.9vw)", "@media (max-width: 1000px)": { fontSize: "calc(8px + 0.9vw)" },}}>
                         {error.url || error.alias}
                     </FormHelperText>
                 </div>
@@ -174,7 +174,7 @@ export default function URLShortenerForm({ append }: { append: (newURL: URLProps
             {shortened && (
                 <div className="w-full h-20px flex flex-row items-center justify-between flex-wrap p-2 mr-6">
                     <h2> Your Shortened url: </h2>
-                    <FormHelperText sx={{ color: "#618753", fontWeight: "bold", fontSize: "calc(3px + 1.3vw)", "@media (max-width: 1000px)": { fontSize: "calc(8px + 0.9vw)" },}}>
+                    <FormHelperText sx={{ color: "#618753", fontWeight: "bold", fontSize: "calc(2px + 0.9vw)", "@media (max-width: 1000px)": { fontSize: "calc(8px + 0.9vw)" },}}>
                         <a href={shortened} target="_blank">{shortened}</a>
                     </FormHelperText>
 
