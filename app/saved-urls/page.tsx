@@ -27,9 +27,9 @@ export default function SavedUrls() {
 
     return (
         <ThemeProvider theme={theme}>
-            <main className="min-h-screen w-full flex-col items-center bg-[#c5c2c9]">
+            <main className="min-h-screen w-full flex-col items-center text-black bg-[#c5c2c9]">
                 <Header />
-                <div className="mt-8 w-full flex-col justify-center items-center m-auto">
+                <div className="mt-8 pb-4 w-full flex-col justify-center items-center m-auto">
                     <h1 className="font-bold text-4xl text-[#453750] text-center mt-4 mb-2 p-2">All Saved Urls and Aliases</h1>
                         <ShortenedDisplay inputShortened={urls} />
                 </div>

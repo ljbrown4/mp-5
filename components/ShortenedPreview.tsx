@@ -35,7 +35,7 @@ export default function ShortenedPreview({ short }: { short: URLProps }) {
                     </a>
                 </p>
 
-                <div className="flex items-center">
+                <div className="flex items-center font-bold">
                     <Checkbox
                         checked={favourite}
                         color="secondary"

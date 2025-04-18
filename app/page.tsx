@@ -27,17 +27,17 @@ export default function Home() {
 
     return(
         <ThemeProvider theme={theme}>
-            <main className="min-h-screen w-full flex-col justify-center bg-[#c5c2c9]">
+            <main className="min-h-screen w-full flex-col justify-center text-black bg-[#c5c2c9]">
                 <Header />
                 <div className="flex flex-col md:flex-row justify-center items-center w-full">
                     {/*looked up how to make it change between flex row and col based on screen size*/}
-                    <div className=" w-[80%] md:w-[50%]">
+                    <div className="w-[90%] m-auto md:w-[50%]">
                         <h1 className="font-bold text-4xl text-[#453750] text-center mt-4 p-2">URL SHORTENER</h1>
                         <p className="font-bold text-xl text-[#73648a] text-center mb-2 p-2">
                             Aliases can not be duplicated. Please delete old alias in the Saved URLs page. </p>
                         <URLShortenerForm append={() => {}} />
                     </div>
-                    <div className="w-[80%] md:w-[45%]">
+                    <div className="w-full m-auto pb-4 md:w-[45%]">
                         <h2 className="font-bold w-full text-2xl text-[#453750] mb-4 mt-6 text-center">
                             Favourited URLs
                         </h2>
