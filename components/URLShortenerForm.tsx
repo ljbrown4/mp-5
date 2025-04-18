@@ -28,7 +28,7 @@ export default function URLShortenerForm({ append }: { append: (newURL: URLProps
                 e.preventDefault();
                 //reset it so previous error messages don't show
                 setError({ url: null, alias: null });
-                setShortened(null);
+
 
                 const current = window.location.origin; //dynamically set url
                 const error = await shortenURL(url, alias, title, favourite, current);
@@ -50,6 +50,7 @@ export default function URLShortenerForm({ append }: { append: (newURL: URLProps
 
                     append(newUrl);
                 } else {
+                    setShortened(null);
                     if (error === "invalURL") {
                         setError({ url: "The entered url is invalid. Please enter a valid url.", alias: null });
                         setUrl("");
