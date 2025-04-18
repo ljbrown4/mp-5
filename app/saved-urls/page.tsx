@@ -31,7 +31,7 @@ export default function SavedUrls() {
                 <Header />
                 <div className="mt-8 pb-4 w-full flex-col justify-center items-center m-auto">
                     <h1 className="font-bold text-4xl text-[#453750] text-center mt-4 mb-2 p-2">All Saved Urls and Aliases</h1>
-                        <ShortenedDisplay inputShortened={urls} />
+                    <ShortenedDisplay inputShortened={urls} />
                 </div>
             </main>
         </ThemeProvider>

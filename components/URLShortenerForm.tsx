@@ -74,7 +74,7 @@ export default function URLShortenerForm({ append }: { append: (newURL: URLProps
                         setFavourite(false);
                     } else {
                         setError({ url: null, alias: "An unexpected error occurred. Please try again." });
-                }}}}>
+                    }}}}>
 
 
             {/* url label/input */}
@@ -186,4 +186,3 @@ export default function URLShortenerForm({ append }: { append: (newURL: URLProps
         </form>
     )
 }
-
