@@ -27,9 +27,9 @@ export default function Home() {
 
     return(
         <ThemeProvider theme={theme}>
-            <main className="min-h-screen pl-2 w-full flex-col justify-center text-black bg-[#c5c2c9]">
+            <main className="min-h-screen w-full flex-col justify-center text-black bg-[#c5c2c9]">
                 <Header />
-                <div className="p-auto flex flex-col md:flex-row justify-center items-center w-full">
+                <div className="pl-3 flex flex-col md:flex-row justify-center items-center w-full">
                     {/*looked up how to make it change between flex row and col based on screen size*/}
                     <div className="w-[90%] m-auto md:w-[50%]">
                         <h1 className="font-bold text-4xl text-[#453750] text-center mt-4 p-2">URL SHORTENER</h1>
