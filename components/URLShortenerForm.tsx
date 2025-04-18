@@ -44,6 +44,7 @@ export default function URLShortenerForm({ append }: { append: (newURL: URLProps
 
 
                 } catch (err) {
+                    console.log(err)
                     if (err instanceof Error) { //looked this up online to get rid of err type unknown error
                         if (err.message === "invalURL") {
                             setError({ url: "The entered url is invalid. Please enter a valid url.", alias: null });
