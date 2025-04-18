@@ -42,7 +42,7 @@ export default function URLShortenerForm({ append }: { append: (newURL: URLProps
                         title,
                         favourites: favourite,
                     };
-
+                    setShortened(short);
                     setUrl("");
                     setAlias("");
                     setTitle("");
