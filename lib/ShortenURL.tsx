@@ -22,6 +22,9 @@ export default async function shortenURL(url: string, alias: string, title:strin
     if (existingAlias) {
         throw new Error("alias1");
      }
+    if (!/^[a-zA-Z0-9_-]+$/.test(alias)) { //looked up how to check for entered invalid url characters
+        throw new Error("alias2");
+    }
 
     const short = `${current}/${alias}`;
 
