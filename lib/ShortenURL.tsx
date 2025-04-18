@@ -10,11 +10,11 @@ export default async function shortenURL(url: string, alias: string, title:strin
     try { //added it in cases that fetch couldn't parse the url
         const validate = await fetch(url);
         if (!validate.ok) {
-            console.error("Invalid URL", url);
+            console.error("InvalURL", url);
             throw new Error("invalURL");
         }
     } catch {
-        console.error("Failed to validate URL", url);
+        console.error("invalURL", url);
         throw new Error("invalURL");
     }
 
@@ -22,11 +22,11 @@ export default async function shortenURL(url: string, alias: string, title:strin
     const existingAlias = await urlCollection.findOne({alias});
 
     if (existingAlias) {
-        console.error("Alias already exists", alias);
+        console.error("alias2", alias);
         throw new Error("alias1");
      }
     if (!/^[a-zA-Z0-9_-]+$/.test(alias)) { //looked up how to check for entered invalid url characters
-        console.error("invalid alias characters", alias);
+        console.error("alias2", alias);
         throw new Error("alias2");
     }
 
